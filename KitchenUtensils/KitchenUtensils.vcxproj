@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="ElectricStove.cpp" />
     <ClCompile Include="GasStove.cpp" />
+    <ClCompile Include="Interaction.cpp" />
     <ClCompile Include="KitchenUtensil.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Multicooker.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="BinaryTreeWrapper.h" />
     <ClInclude Include="ElectricStove.h" />
     <ClInclude Include="GasStove.h" />
+    <ClInclude Include="Interaction.h" />
     <ClInclude Include="KitchenUtensil.h" />
     <ClInclude Include="Multicooker.h" />
     <ClInclude Include="Stove.h" />

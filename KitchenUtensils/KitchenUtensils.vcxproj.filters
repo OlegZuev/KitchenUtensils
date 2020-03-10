@@ -36,6 +36,9 @@
     <ClCompile Include="KitchenUtensil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Interaction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pot.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BinaryTreeWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interaction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

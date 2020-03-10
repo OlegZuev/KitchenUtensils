@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <algorithm>
 
 template<class T>
@@ -47,7 +48,7 @@ void BinaryTree<T>::add(BinaryTree<T>*& node, T* new_element) {
 	} else if (*new_element > *node->current_element){
 		add(node->right, new_element);
 	} else {
-		std::cout << "That element already exists: " << std::endl << *node->current_element << std::endl;
+		std::cout << std::endl << "That element already exists: " << std::endl << *node->current_element << std::endl;
 	}
 	balance(node);
 }

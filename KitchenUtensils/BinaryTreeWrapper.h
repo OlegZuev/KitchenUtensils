@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "BinaryTree.h"
 
+class Stove;
+
 template<class T>
 class BinaryTreeWrapper {
 public:
@@ -63,7 +65,7 @@ void BinaryTreeWrapper<T>::remove(const int inventory_number) {
 	if (inventory_number <= 0)
 		throw std::invalid_argument("inventory_number should be greater than 0");
 
-	KitchenUtensil* dummy_utensil = new Stove(inventory_number, "");
+	auto dummy_utensil = new Stove(inventory_number, "");
 	root = BinaryTree<T>::remove(root, dummy_utensil);
 	delete dummy_utensil;
 }
