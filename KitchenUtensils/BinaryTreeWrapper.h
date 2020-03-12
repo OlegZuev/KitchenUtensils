@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "BinaryTree.h"
-
-class Stove;
+#include "Stove.h"
 
 template<class T>
 class BinaryTreeWrapper {
@@ -18,6 +17,7 @@ public:
 	void forwardPrint();
 	void backwardPrint();
 	void symmetricPrint();
+	bool exists(int inventory_number);
 
 private:
 	BinaryTree<T>* root{};
@@ -83,6 +83,14 @@ void BinaryTreeWrapper<T>::backwardPrint() {
 template <class T>
 void BinaryTreeWrapper<T>::symmetricPrint() {
 	BinaryTree<T>::symmetricPrint(root);
+}
+
+template<class T>
+bool BinaryTreeWrapper<T>::exists(const int inventory_number) {
+	auto dummy_utensil = new Stove(inventory_number, "");
+	auto result = BinaryTree<T>::exists(root, dummy_utensil);
+	delete dummy_utensil;
+	return result;
 }
 
 template <class T>

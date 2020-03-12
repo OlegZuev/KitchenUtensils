@@ -3,15 +3,17 @@
 #include <algorithm>
 
 template<class T>
-class BinaryTree {
+class BinaryTree {  // NOLINT(hicpp-special-member-functions)
 public:
 	BinaryTree();
+	~BinaryTree();
 	static void add(BinaryTree*& node, T* new_element);
 	static BinaryTree<T>* remove(BinaryTree* node, T* element);
 	static void forwardPrint(BinaryTree* node);
 	static void backwardPrint(BinaryTree* node);
 	static void symmetricPrint(BinaryTree* node);
 	static void clear(BinaryTree* node);
+	static bool exists(BinaryTree<T>* node, T* element);
 
 private:
 	BinaryTree* left;
@@ -36,6 +38,11 @@ BinaryTree<T>::BinaryTree() {
 	right = nullptr;
 	current_element = nullptr;
 	height = 1;
+}
+
+template <class T>
+BinaryTree<T>::~BinaryTree() {
+	delete current_element;
 }
 
 template <class T>
@@ -72,7 +79,7 @@ BinaryTree<T>* BinaryTree<T>::remove(BinaryTree* node, T* element) {
 		auto right_min = findMin(right);
 		right_min->right = detachMin(right);
 		right_min->left = left;
-		return balance(right_min);;
+		return balance(right_min);
 	}
 
 	return balance(node);
@@ -84,8 +91,8 @@ void BinaryTree<T>::forwardPrint(BinaryTree* node) {
 		return;
 
 	std::cout << *node->current_element << std::endl;
-	symmetricPrint(node->left);
-	symmetricPrint(node->right);
+	forwardPrint(node->left);
+	forwardPrint(node->right);
 }
 
 template <class T>
@@ -93,8 +100,8 @@ void BinaryTree<T>::backwardPrint(BinaryTree* node) {
 	if (node == nullptr)
 		return;
 
-	symmetricPrint(node->left);
-	symmetricPrint(node->right);
+	backwardPrint(node->left);
+	backwardPrint(node->right);
 	std::cout << *node->current_element << std::endl;
 }
 
@@ -116,6 +123,17 @@ void BinaryTree<T>::clear(BinaryTree* node) {
 	clear(node->left);
 	clear(node->right);
 	delete node;
+}
+
+template<class T>
+bool BinaryTree<T>::exists(BinaryTree<T>* node, T* element) {
+	if (node == nullptr)
+		return false;
+
+	if (*node->current_element == *element)
+		return true;
+
+	return exists(node->left, element) || exists(node->right, element);
 }
 
 template <class T>

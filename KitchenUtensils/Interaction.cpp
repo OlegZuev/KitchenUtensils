@@ -10,6 +10,13 @@ void Interaction::addUtensil(BinaryTreeWrapper<KitchenUtensil>& utensils) {
 		"Gas Stove - 3" << std::endl << "Electric Stove - 4" << std::endl << "Multicooker - 5" << std::endl;
 	const int index = readInt("Index: ", std::regex("[1-5]"));
 	const int inventory_number = readInt("Input inventory number: ", std::regex("\\d+"));
+	if (utensils.exists(inventory_number)) {
+		KitchenUtensil* dummy_utensil = new Stove(inventory_number, "");
+		utensils.add(dummy_utensil);
+		delete dummy_utensil;
+		return;
+	}
+		
 	std::string color;
 	int volume;
 	int gas_consumption;
